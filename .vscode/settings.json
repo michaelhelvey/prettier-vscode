@@ -4,7 +4,7 @@
     "source.fixAll.eslint": true
   },
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "msh-fork.prettier-vscode",
   "editor.formatOnType": false,
   "files.eol": "\n",
   "cSpell.words": [
@@ -14,7 +14,7 @@
     "commonmark",
     "docblock",
     "editorconfig",
-    "esbenp",
+    "msh-fork",
     "gitignore",
     "pnpm",
     "prettier's",
