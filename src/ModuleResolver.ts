@@ -341,7 +341,50 @@ export class ModuleResolver implements ModuleResolverInterface {
       );
       return "disabled";
     }
+
+    if (vscodeConfig.mergeWithLocalConfig) {
+      const localConfig = this.extractLocalConfig(vscodeConfig);
+      const mergedConfig = {
+        ...localConfig,
+        ...resolvedConfig,
+      };
+
+      this.loggingService.logInfo(
+        "Merging vscode config with project config. Result:",
+        mergedConfig
+      );
+      return mergedConfig;
+    }
+
+    this.loggingService.logInfo("Not merging vscode & project configuration");
     return resolvedConfig;
+  }
+
+  private extractLocalConfig(
+    vscodeConfig: PrettierVSCodeConfig
+  ): PrettierOptions {
+    // Extracted from the IExtensionConfig interface
+    const extensionSpecificConfig = {
+      mergeWithLocalConfig: true,
+      ignorePath: true,
+      prettierPath: true,
+      configPath: true,
+      requireConfig: true,
+      useEditorConfig: true,
+      resolveGlobalModules: true,
+      withNodeModules: true,
+      documentSelectors: true,
+      enable: true,
+      enableDebugLogs: true,
+    };
+    const result: any = {};
+    for (const [key, value] of Object.entries(vscodeConfig)) {
+      if (!(key in extensionSpecificConfig)) {
+        result[key] = value;
+      }
+    }
+
+    return result as PrettierOptions;
   }
 
   /**

@@ -388,6 +388,12 @@
           "default": "auto",
           "markdownDescription": "%ext.config.embeddedLanguageFormatting%",
           "scope": "resource"
+        },
+        "prettier.mergeWithLocalConfig": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "%ext.config.mergeWithLocalConfig%",
+          "scope": "resource"
         }
       }
     },

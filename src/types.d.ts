@@ -46,6 +46,7 @@ export type PackageManagers = "npm" | "yarn" | "pnpm";
  * prettier-vscode specific configuration
  */
 interface IExtensionConfig {
+  mergeWithLocalConfig: boolean;
   /**
    * Path to '.prettierignore' or similar.
    */
